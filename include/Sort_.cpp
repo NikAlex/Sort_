@@ -10,12 +10,12 @@
 
 using namespace std;
 
-struct A {
+struct stroka {
 public:
 	ifstream *f;
 	string str;
-	A(const string& s, ifstream* f_) : str(s), f(f_) {}
-	bool operator < (const A& s) const
+	stroka(const string& s, ifstream* f_) : str(s), f(f_) {}
+	bool operator < (const stroka& s) const
 	{
 		return (str > s.str);
 	}
@@ -35,7 +35,7 @@ private:
 	size_t buffer, count_of_files, closed_files;
 	vector<string> lines;
 	vector<string> file_names;
-	priority_queue<A> end_sorting;
+	priority_queue<stroka> end_sorting;
 };
 
 inline Runner::~Runner() {
@@ -87,11 +87,11 @@ inline auto Runner::file_sort()->void {
 	for (int i = 0; i < count_of_files; ++i) {
 		ifstream* f_ = new ifstream(file_names[i]);
 		getline(*f_, str);
-		A ff(str, f_);
+		stroka ff(str, f_);
 		end_sorting.push(ff);
 	}
 	while (!end_sorting.empty()) {
-		A ff = end_sorting.top();
+		stroka ff = end_sorting.top();
 		end_sorting.pop();
 		if (ff.str != "") f12 << ff.str << endl;
 		if (!(*ff.f).eof())
