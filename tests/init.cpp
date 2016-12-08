@@ -24,7 +24,7 @@ getline(file,s1);
   p=false;
    cout<<i<<endl;
    cout<<s1<<endl;
-   cout<<s2<<endl;
+   cout<<s2<<<endl;
    break;
   }
  }
