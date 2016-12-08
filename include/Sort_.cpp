@@ -10,12 +10,12 @@
 
 using namespace std;
 
-struct stroka {
+struct Stroka {
 public:
 	ifstream *f;
 	string str;
-	stroka(const string& s, ifstream* f_) : str(s), f(f_) {}
-	bool operator < (const stroka& s) const
+	Stroka(const string& s, ifstream* f_) : str(s), f(f_) {}
+	bool operator < (const Stroka& s) const
 	{
 		return (str > s.str);
 	}
@@ -75,7 +75,7 @@ inline auto Runner::remove_temp_files()->void {
 		if (remove(file_names[i].c_str()) == -1) {
 			throw;
 		}
-		else {
+	else {
 			cout << "Gj";
 		}
 	}
@@ -87,11 +87,11 @@ inline auto Runner::file_sort()->void {
 	for (int i = 0; i < count_of_files; ++i) {
 		ifstream* f_ = new ifstream(file_names[i]);
 		getline(*f_, str);
-		stroka ff(str, f_);
+		Stroka ff(str, f_);
 		end_sorting.push(ff);
 	}
 	while (!end_sorting.empty()) {
-		stroka ff = end_sorting.top();
+		Stroka ff = end_sorting.top();
 		end_sorting.pop();
 		if (ff.str != "") f12 << ff.str << endl;
 		if (!(*ff.f).eof())
